@@ -1,0 +1,106 @@
+*{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: left;
+}
+body{
+    display: block;
+    width: 980px;
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   color: white;
+  
+}
+aside{
+    width: 100px;
+    height: 815px;
+    float: left;
+}
+section{
+    width:980px ;
+    height: 800px;
+    display: flex;
+     gap: 20px;
+}
+nav{
+   height: 80px;
+    width: 1280px;
+   background-color: black;
+   opacity: 0.65;
+   margin: 0 34px; 
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 16px;
+    align-items: end;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+nav .a{
+    color: white;
+     text-decoration: none;
+     transition: color 0.2s;
+}
+
+footer{
+    width: 980px;
+    height: 20px;
+}
+
+main{
+    margin-top: 20px;
+    align-items: center;
+}
+.Home{
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(169, 5, 109, 0.1);
+      padding: 20px;
+   width: 100%;
+      height: 200px;
+      text-align: left;
+       margin-bottom: 10px;
+}
+.Join{
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(172, 54, 155, 0.1);
+      padding: 20px;
+      width: 100%;
+      height: 200px;
+      text-align: left;
+       margin-bottom: 10px;
+}
+.Schedule{
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(225, 47, 169, 0.1);
+      padding: 20px;
+      width: 100%;
+      height: 200px;
+      text-align: left;
+       margin-bottom: 10px;
+}
+.Trainers{
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(235, 54, 193, 0.1);
+      padding: 20px;
+      width: 100%;
+      height: 200px;
+      text-align: left;
+       margin-bottom: 10px;
+}
+.Contact{
+     border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(218, 53, 202, 0.1);
+      padding: 20px;
+      width: 100%;
+      height: 200px;
+      text-align: left;
+       margin-bottom: 10px;
+}
+

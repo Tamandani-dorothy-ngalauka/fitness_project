@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fitness Club — Reports & Analytics</title>
+  <link rel="stylesheet" href="Admin_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+   <div class="admin-nav">
+                <a href="dash.html" class="nav-link active">Dashboard</a>
+                <a href="memberManagement.html" class="nav-link">Members</a>
+                <a href="classes.html" class="nav-link">Classes</a>
+                <a href="analytics.html" class="nav-link">Reports</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+              </div>
+  <!-- Toast routing wrappers -->
+  <div id="root">
+    <div id="created">
+      <div id="updated">
+        <div id="deleted">
+          <div class="wrap">
+
+            <div class="topbar">
+              <div class="brand">
+                <div class="logo">FC</div>
+                <div>
+                  <h1>Fitness Club — Reports & Analytics</h1>
+                  <div class="sub">Track performance, revenue, attendance, and class trends • Demo UI only — no data is saved</div>
+                </div>
+              </div>
+              <div class="notice"><b>Reminder:</b> Share company analytics to all employees.</div>
+            </div>
+
+            <div class="tabs">
+              <!-- radios -->
+              <input type="radio" id="t-overview" name="tabs" checked />
+              <input type="radio" id="t-revenue" name="tabs" />
+              <input type="radio" id="t-attendance" name="tabs" />
+              <input type="radio" id="t-classes" name="tabs" />
+              <input type="radio" id="t-trainers" name="tabs" />
+              <input type="radio" id="t-downloads" name="tabs" />
+
+              <!-- tab head -->
+              <div class="tab-head">
+                <div class="tab"><label for="t-overview">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 13l6-6 5 5 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Overview
+                </label></div>
+                <div class="tab"><label for="t-revenue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 16V8m6 8V4m6 12V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Revenue
+                </label></div>
+                <div class="tab"><label for="t-attendance">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20a8 8 0 0 1 16 0M12 12a4 4 0 1 0 0-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Attendance
+                </label></div>
+                <div class="tab"><label for="t-classes">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Classes
+                </label></div>
+                <div class="tab"><label for="t-trainers">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Trainers
+                </label></div>
+                <div class="tab"><label for="t-downloads">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Downloads
+                </label></div>
+              </div>
+
+              <!-- panels -->
+              <div class="panels">
+
+                <!-- OVERVIEW -->
+                <section id="p-overview" class="panel">
+                  <div class="card">
+                    <!-- Range filters (CSS-only pills) -->
+                    <input id="r-7" type="radio" name="range" checked class="sr-only">
+                    <input id="r-30" type="radio" name="range" class="sr-only">
+                    <input id="r-90" type="radio" name="range" class="sr-only">
+                    <input id="r-ytd" type="radio" name="range" class="sr-only">
+
+                    <div class="toolbar">
+                      <div class="left">
+                        <div class="seg">
+                          <label class="for-7" for="r-7">Last 7 days</label>
+                          <label class="for-30" for="r-30">30 days</label>
+                          <label class="for-90" for="r-90">90 days</label>
+                          <label class="for-ytd" for="r-ytd">YTD</label>
+                        </div>
+                        <span class="tag">Location: All</span>
+                      </div>
+                      <div class="right">
+                        <a class="btn secondary" href="#schedule">Schedule Report</a>
+                        <a class="btn primary" href="#created">Export</a>
+                      </div>
+                    </div>
+
+                    <!-- KPIs -->
+                    <div class="kpi-grid">
+                      <div class="kpi">
+                        <div class="label">Total Revenue</div>
+                        <div class="value">$48,320</div>
+                        <div class="delta up">+8.4% vs prev</div>
+                      </div>
+                      <div class="kpi">
+                        <div class="label">Avg. Class Fill</div>
+                        <div class="value">78%</div>
+                        <div class="delta up">+2.1% vs prev</div>
+                      </div>
+                      <div class="kpi">
+                        <div class="label">Active Members</div>
+                        <div class="value">1,264</div>
+                        <div class="delta up">+3.0% vs prev</div>
+                      </div>
+                      <div class="kpi">
+                        <div class="label">Churn</div>
+                        <div class="value">2.6%</div>
+                        <div class="delta down">-0.4% vs prev</div>
+                      </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="grid" style="margin-top:16px">
+                      <!-- Line chart -->
+                      <div class="chart-card">
+                        <div class="chart-title">
+                          <div style="font-weight:800">Revenue & Membership Trend</div>
+                          <div class="legend">
+                            <span class="dot" style="background:#60a5fa"></span><span class="muted">Revenue</span>
+                            <span class="dot" style="background:#34d399"></span><span class="muted">New Members</span>
+                          </div>
+                        </div>
+
+                        <svg class="chart" viewBox="0 0 600 240" role="img" aria-label="Line chart of revenue and members">
+                          <!-- grid -->
+                          <g stroke-dasharray="4 4">
+                            <line class="gridline" x1="0" y1="40" x2="600" y2="40"/>
+                            <line class="gridline" x1="0" y1="90" x2="600" y2="90"/>
+                            <line class="gridline" x1="0" y1="140" x2="600" y2="140"/>
+                            <line class="gridline" x1="0" y1="190" x2="600" y2="190"/>
+                          </g>
+                          <!-- areas -->
+                          <path class="area1" d="M0,170 L50,150 L100,160 L150,130 L200,120 L250,135 L300,110 L350,115 L400,95 L450,90 L500,100 L550,85 L600,92 L600,240 L0,240 Z"/>
+                          <path class="area2" d="M0,190 L50,180 L100,175 L150,165 L200,160 L250,150 L300,145 L350,150 L400,138 L450,140 L500,130 L550,128 L600,120 L600,240 L0,240 Z"/>
+                          <!-- lines -->
+                          <polyline class="poly1" points="0,170 50,150 100,160 150,130 200,120 250,135 300,110 350,115 400,95 450,90 500,100 550,85 600,92"/>
+                          <polyline class="poly2" points="0,190 50,180 100,175 150,165 200,160 250,150 300,145 350,150 400,138 450,140 500,130 550,128 600,120"/>
+                          <!-- x labels -->
+                          <g fill="#94a3b8" font-size="10">
+                            <text x="0" y="232">Jan</text>
+                            <text x="100" y="232">Mar</text>
+                            <text x="200" y="232">May</text>
+                            <text x="300" y="232">Jul</text>
+                            <text x="400" y="232">Sep</text>
+                            <text x="500" y="232">Nov</text>
+                          </g>
+                        </svg>
+                      </div>
+
+                      <!-- Donut + heatmap -->
+                      <div class="chart-card">
+                        <div class="chart-title">
+                          <div style="font-weight:800">Class Mix (sales share)</div>
+                          <span class="tag">Last 30d</span>
+                        </div>
+                        <div class="donut-wrap">
+                          <div style="position:relative">
+                            <div class="donut"></div>
+                            <div class="donut-center">100%</div>
+                          </div>
+                          <div>
+                            <div class="legend" style="margin-bottom:8px">
+                              <span class="dot" style="background:var(--donut1)"></span><span class="muted">Yoga 35%</span>
+                              <span class="dot" style="background:var(--donut2)"></span><span class="muted">HIIT 28%</span>
+                              <span class="dot" style="background:var(--donut3)"></span><span class="muted">Cycling 22%</span>
+                              <span class="dot" style="background:var(--donut4)"></span><span class="muted">Strength 15%</span>
+                            </div>
+                            <div class="muted">Distribution of revenue across class categories for the selected period.</div>
+                          </div>
+                        </div>
+                        <div style="height:12px"></div>
+                        <div class="chart-title">
+                          <div style="font-weight:800">Check-in Heatmap</div>
+                          <span class="tag">14×6 (days × time)</span>
+                        </div>
+                        <div class="heat" aria-label="Check-in heatmap">
+                          <!-- 14 columns x 6 rows preview -->
+                          <!-- row 1 -->
+                          <div class="cell lvl1"></div><div class="cell lvl2"></div><div class="cell"></div><div class="cell lvl3"></div><div class="cell lvl4"></div><div class="cell lvl5"></div><div class="cell lvl3"></div><div class="cell lvl2"></div><div class="cell"></div><div class="cell lvl1"></div><div class="cell lvl2"></div><div class="cell lvl4"></div><div class="cell lvl3"></div><div class="cell lvl5"></div>
+                          <!-- row 2 -->
+                          <div class="cell"></div><div class="cell lvl1"></div><div class="cell lvl2"></div><div class="cell"></div><div class="cell lvl3"></div><div class="cell lvl4"></div><div class="cell lvl5"></div><div class="cell lvl3"></div><div class="cell lvl2"></div><div class="cell"></div><div class="cell lvl1"></div><div class="cell lvl2"></div><div class="cell lvl4"></div><div class="cell lvl3"></div>
+                          <!-- row 3 -->
+                          <div class="cell lvl2"></div><div class="cell lvl3"></div><div class="cell lvl1"></div><div class="cell"></div><div class="cell lvl2"></div><div class="cell lvl3"></div><div class="cell lvl4"></div><div class="cell lvl5"></div><div class="cell lvl4"></div><div class="cell lvl3"></div><div class="cell lvl2"></div><div class="cell"></div><div class="cell lvl1"></div><div class="cell lvl2"></div>
+                          <!-- row 4 -->
+                          <div class="cell lvl1"></div><div class="cell"></div><div class="cell lvl2"></div><div class="cell lvl4"></div><div class="cell lvl5"></div><div class="cell lvl4"></div><div class="cell lvl3"></div><div class="cell lvl2"></div><div class="cell"></div><div class="cell lvl1"></div><div class="cell lvl2"></div><div class="cell lvl3"></div><div class="cell lvl4"></div><div class="cell lvl3"></div>
+                          <!-- row 5 -->
+                          <div class="cell lvl2"></div><div class="cell lvl1"></div><div class="cell"></div><div class="cell lvl2"></div><div class="cell lvl3"></div><div class="cell lvl5"></div><div class="cell lvl4"></div><div class="cell lvl3"></div><div class="cell lvl2"></div><div class="cell"></div><div class="cell lvl1"></div><div class="cell lvl2"></div><div class="cell lvl3"></div><div class="cell lvl4"></div>
+                          <!-- row 6 -->
+                          <div class="cell"></div><div class="cell lvl1"></div><div class="cell lvl2"></div><div class="cell lvl3"></div><div class="cell lvl4"></div><div class="cell lvl5"></div><div class="cell lvl4"></div><div class="cell lvl3"></div><div class="cell lvl2"></div><div class="cell lvl1"></div><div class="cell"></div><div class="cell lvl2"></div><div class="cell lvl3"></div><div class="cell lvl4"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- REVENUE -->
+                <section id="p-revenue" class="panel">
+                  <div class="card">
+                    <div class="toolbar">
+                      <h2 style="margin:0">Revenue</h2>
+                      <div class="right">
+                        <span class="tag">Currency: USD</span>
+                        <a class="btn primary" href="#created">Export CSV</a>
+                      </div>
+                    </div>
+
+                    <div class="grid">
+                      <div class="chart-card">
+                        <div class="chart-title">
+                          <div style="font-weight:800">Monthly Revenue (last 12 months)</div>
+                          <div class="legend">
+                            <span class="dot" style="background:var(--bar)"></span><span class="muted">Memberships</span>
+                            <span class="dot" style="background:var(--bar2)"></span><span class="muted">Classes</span>
+                          </div>
+                        </div>
+                        <div class="bars" aria-label="Revenue bars">
+                          <!-- membership bars -->
+                          <div class="bar" style="height:70%"></div>
+                          <div class="bar" style="height:62%"></div>
+                          <div class="bar" style="height:65%"></div>
+                          <div class="bar" style="height:72%"></div>
+                          <div class="bar" style="height:68%"></div>
+                          <div class="bar" style="height:74%"></div>
+                          <div class="bar" style="height:80%"></div>
+                          <div class="bar" style="height:77%"></div>
+                          <div class="bar" style="height:85%"></div>
+                          <div class="bar" style="height:88%"></div>
+                          <div class="bar" style="height:83%"></div>
+                          <div class="bar" style="height:90%"></div>
+                          <!-- class bars overlay (thin) -->
+                          <div class="bar2" style="height:40%"></div>
+                          <div class="bar2" style="height:38%"></div>
+                          <div class="bar2" style="height:42%"></div>
+                          <div class="bar2" style="height:45%"></div>
+                          <div class="bar2" style="height:46%"></div>
+                          <div class="bar2" style="height:50%"></div>
+                          <div class="bar2" style="height:54%"></div>
+                          <div class="bar2" style="height:55%"></div>
+                          <div class="bar2" style="height:58%"></div>
+                          <div class="bar2" style="height:60%"></div>
+                          <div class="bar2" style="height:62%"></div>
+                          <div class="bar2" style="height:64%"></div>
+                        </div>
+                        <div class="hint">Bars are illustrative. Export to get numbers.</div>
+                      </div>
+
+                      <div class="chart-card">
+                        <div class="chart-title"><div style="font-weight:800">Top Products (sample)</div></div>
+                        <table class="table" aria-label="Top products">
+                          <thead>
+                            <tr>
+                              <th>Product</th><th>Units</th><th>Revenue</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>Club Tee — Navy</td><td>312</td><td>$6,240</td></tr>
+                            <tr><td>Yoga Mat — Pro</td><td>184</td><td>$6,992</td></tr>
+                            <tr><td>Hydro Bottle — 750ml</td><td>268</td><td>$3,752</td></tr>
+                            <tr><td>Club Hoodie — Gray</td><td>129</td><td>$5,031</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+                </section>
+
+                <!-- ATTENDANCE -->
+                <section id="p-attendance" class="panel">
+                  <div class="card">
+                    <div class="toolbar">
+                      <h2 style="margin:0">Attendance</h2>
+                      <div class="right">
+                        <span class="tag">Weekdays vs Weekends</span>
+                        <a class="btn secondary" href="#schedule">Schedule</a>
+                      </div>
+                    </div>
+
+                    <div class="grid">
+                      <div class="chart-card">
+                        <div class="chart-title">
+                          <div style="font-weight:800">Daily Check-ins (last 30d)</div>
+                          <span class="tag">Sample Data</span>
+                        </div>
+                        <svg class="chart" viewBox="0 0 600 240" role="img" aria-label="Daily check-ins line">
+                          <g stroke-dasharray="4 4">
+                            <line class="gridline" x1="0" y1="40" x2="600" y2="40"/>
+                            <line class="gridline" x1="0" y1="90" x2="600" y2="90"/>
+                            <line class="gridline" x1="0" y1="140" x2="600" y2="140"/>
+                            <line class="gridline" x1="0" y1="190" x2="600" y2="190"/>
+                          </g>
+                          <path class="area1" d="M0,160 L20,150 L40,155 L60,145 L80,150 L100,138 L120,130 L140,128 L160,135 L180,125 L200,120 L220,118 L240,130 L260,132 L280,128 L300,122 L320,116 L340,120 L360,110 L380,115 L400,120 L420,130 L440,128 L460,135 L480,138 L500,130 L520,125 L540,120 L560,115 L580,118 L600,116 L600,240 L0,240 Z"/>
+                          <polyline class="poly1" points="0,160 20,150 40,155 60,145 80,150 100,138 120,130 140,128 160,135 180,125 200,120 220,118 240,130 260,132 280,128 300,122 320,116 340,120 360,110 380,115 400,120 420,130 440,128 460,135 480,138 500,130 520,125 540,120 560,115 580,118 600,116"/>
+                        </svg>
+                      </div>
+
+                      <div class="chart-card">
+                        <div class="chart-title"><div style="font-weight:800">Class Fill by Time</div></div>
+                        <table class="table" aria-label="Class fill rates">
+                          <thead>
+                            <tr><th>Time</th><th>Avg Fill</th><th>Trend</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>6:00–8:00 AM</td><td>82%</td><td><span class="pill">Up</span></td></tr>
+                            <tr><td>12:00–2:00 PM</td><td>61%</td><td><span class="pill" style="background:#fef3c7;color:#7c2d12;border-color:#f59e0b55">Flat</span></td></tr>
+                            <tr><td>5:00–8:00 PM</td><td>88%</td><td><span class="pill">Up</span></td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- CLASSES -->
+                <section id="p-classes" class="panel">
+                  <div class="card">
+                    <div class="toolbar">
+                      <h2 style="margin:0">Classes</h2>
+                      <div class="right">
+                        <a class="btn primary" href="#created">Export Classes</a>
+                      </div>
+                    </div>
+
+                    <div class="grid">
+                      <div class="chart-card">
+                        <div class="chart-title"><div style="font-weight:800">Top Classes (by attendance)</div></div>
+                        <table class="table" aria-label="Top classes">
+                          <thead>
+                            <tr><th>Class</th><th>Category</th><th>Avg Fill</th><th>Sessions</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>Morning Vinyasa</td><td>Yoga</td><td>92%</td><td>36</td></tr>
+                            <tr><td>Lunchtime HIIT</td><td>HIIT</td><td>85%</td><td>28</td></tr>
+                            <tr><td>Spin Power</td><td>Cycling</td><td>88%</td><td>40</td></tr>
+                            <tr><td>Strength Basics</td><td>Strength</td><td>74%</td><td>16</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="chart-card">
+                        <div class="chart-title"><div style="font-weight:800">Category Share</div></div>
+                        <div class="donut-wrap">
+                          <div style="position:relative">
+                            <div class="donut" style="--p1:30;--p2:30;--p3:20;--p4:20"></div>
+                            <div class="donut-center">100%</div>
+                          </div>
+                          <div>
+                            <div class="legend">
+                              <span class="dot" style="background:var(--donut1)"></span><span class="muted">Yoga 30%</span>
+                              <span class="dot" style="background:var(--donut2)"></span><span class="muted">HIIT 30%</span>
+                              <span class="dot" style="background:var(--donut3)"></span><span class="muted">Cycling 20%</span>
+                              <span class="dot" style="background:var(--donut4)"></span><span class="muted">Strength 20%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </section>
+
+                <!-- TRAINERS -->
+                <section id="p-trainers" class="panel">
+                  <div class="card">
+                    <div class="toolbar">
+                      <h2 style="margin:0">Trainers</h2>
+                      <div class="right">
+                        <span class="tag">Period: Last 90 days</span>
+                        <a class="btn primary" href="#created">Export Trainers</a>
+                      </div>
+                    </div>
+
+                    <div class="grid">
+                      <div class="chart-card">
+                        <div class="chart-title">
+                          <div style="font-weight:800">Utilization (sessions taught)</div>
+                        </div>
+                        <table class="table" aria-label="Trainer utilization">
+                          <thead>
+                            <tr><th>Trainer</th><th>Sessions</th><th>Avg Rating</th><th>Fill</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>Ana Kim</td><td>112</td><td>4.8</td><td>89%</td></tr>
+                            <tr><td>Tom Miller</td><td>98</td><td>4.6</td><td>83%</td></tr>
+                            <tr><td>Jess R.</td><td>124</td><td>4.7</td><td>86%</td></tr>
+                            <tr><td>Dani K.</td><td>76</td><td>4.5</td><td>78%</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="chart-card">
+                        <div class="chart-title"><div style="font-weight:800">Ratings Trend (sample)</div></div>
+                        <svg class="chart" viewBox="0 0 600 240" role="img" aria-label="Ratings trend">
+                          <g stroke-dasharray="4 4">
+                            <line class="gridline" x1="0" y1="60" x2="600" y2="60"/>
+                            <line class="gridline" x1="0" y1="120" x2="600" y2="120"/>
+                            <line class="gridline" x1="0" y1="180" x2="600" y2="180"/>
+                          </g>
+                          <polyline class="poly2" points="0,150 60,140 120,135 180,130 240,128 300,125 360,118 420,116 480,114 540,112 600,110"/>
+                        </svg>
+                        <div class="hint">Average post-class ratings trending upward.</div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- DOWNLOADS -->
+                <section id="p-downloads" class="panel">
+                  <div class="card">
+                    <div class="toolbar">
+                      <h2 style="margin:0">Report Downloads</h2>
+                      <div class="right">
+                        <a class="btn secondary" href="#schedule">Schedule</a>
+                      </div>
+                    </div>
+
+                    <div class="grid" style="grid-template-columns:1fr 1fr">
+                      <div class="chart-card">
+                        <div style="font-weight:800;margin-bottom:8px">Quick Exports</div>
+                        <div style="display:grid;gap:10px">
+                          <a class="btn primary" href="data:text/csv;charset=utf-8,Date,Revenue,NewMembers,Checkins%0A" download="overview.csv">Download Overview (CSV)</a>
+                          <a class="btn secondary" href="data:text/csv;charset=utf-8,Month,Memberships,Classes,Total%0A" download="revenue.csv">Download Revenue (CSV)</a>
+                          <a class="btn secondary" href="data:text/csv;charset=utf-8,Date,Class,Fill%0A" download="attendance.csv">Download Attendance (CSV)</a>
+                          <a class="btn secondary" href="data:text/csv;charset=utf-8,Trainer,Sessions,Rating%0A" download="trainers.csv">Download Trainers (CSV)</a>
+                        </div>
+                        <div class="hint" style="margin-top:8px">Downloads are sample CSVs for demo purposes.</div>
+                      </div>
+
+                      <div class="chart-card">
+                        <div style="font-weight:800;margin-bottom:8px">Recent Exports</div>
+                        <table class="table" aria-label="Recent exports">
+                          <thead>
+                            <tr><th>Report</th><th>Range</th><th>Format</th><th style="text-align:right;padding-right:12px">Action</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Revenue Monthly</td><td>YTD</td><td>CSV</td>
+                              <td style="text-align:right"><a class="btn primary" href="#created">Re-run</a></td>
+                            </tr>
+                            <tr>
+                              <td>Attendance Daily</td><td>Last 30d</td><td>CSV</td>
+                              <td style="text-align:right"><a class="btn primary" href="#created">Re-run</a></td>
+                            </tr>
+                            <tr>
+                              <td>Trainers Utilization</td><td>Last 90d</td><td>CSV</td>
+                              <td style="text-align:right"><a class="btn primary" href="#created">Re-run</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+                </section>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Toasts -->
+          <div class="toasts">
+            <div class="toast t-created">Export queued successfully. You’ll get a file shortly.</div>
+            <div class="toast t-updated">Scheduled! Your report will be sent as planned.</div>
+            <div class="toast t-deleted" style="border-left-color: var(--warn)">Removed from schedule.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div id="schedule" class="modal" role="dialog" aria-modal="true" aria-labelledby="scheduleTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="scheduleTitle">Schedule a Report</h3>
+      <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <label for="s1">Report</label>
+          <select id="s1">
+            <option>Overview</option>
+            <option>Revenue</option>
+            <option>Attendance</option>
+            <option>Trainers</option>
+          </select>
+        </div>
+        <div>
+          <label for="s2">Frequency</label>
+          <select id="s2">
+            <option>Daily</option>
+            <option selected>Weekly</option>
+            <option>Monthly</option>
+          </select>
+        </div>
+      </div>
+      <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label for="s3">Email to</label><input id="s3" placeholder="e.g., ops@example.com" /></div>
+        <div><label for="s4">Start date</label><input id="s4" placeholder="e.g., 2025-09-20" /></div>
+      </div>
+      <div class="row"><label for="s5">Notes</label><textarea id="s5" placeholder="Optional message…"></textarea></div>
+      <div class="actions">
+        <a class="btn secondary" href="#">Cancel</a>
+        <a class="btn primary" href="#updated">Schedule</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- A11y helper -->
+  <span class="sr-only" aria-hidden="true"></span>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9841d2fa9065470e',t:'MTc1ODcxMjEwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

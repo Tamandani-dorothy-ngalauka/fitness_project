@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fitness Club — Admin Settings</title>
+  <link rel="stylesheet" href="Admin_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+   <div class="admin-nav">
+                <a href="dash.html" class="nav-link active">Dashboard</a>
+                <a href="memberManagement.html" class="nav-link">Members</a>
+                <a href="classes.html" class="nav-link">Classes</a>
+                <a href="analytics.html" class="nav-link">Reports</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+              </div>
+  <!-- Toast routing wrappers -->
+  <div id="root">
+    <div id="saved">
+      <div id="reset">
+        <div id="error">
+          <div class="wrap">
+            <div class="topbar">
+              <div class="brand">
+                <div class="logo">FC</div>
+                <div>
+                  <h1>Fitness Club — Admin Settings</h1>
+                  <div class="sub">Configure club settings, integrations, and preferences • Demo UI only</div>
+                </div>
+              </div>
+              <div class="notice"><b>Note:</b> Ask trainers for what theme to apply next.</div>
+            </div>
+
+            <div class="tabs">
+              <!-- radios -->
+              <input type="radio" id="t-general" name="tabs" checked />
+              <input type="radio" id="t-notifications" name="tabs" />
+              <input type="radio" id="t-billing" name="tabs" />
+              <input type="radio" id="t-integrations" name="tabs" />
+              <input type="radio" id="t-security" name="tabs" />
+              <input type="radio" id="t-backup" name="tabs" />
+
+              <!-- head -->
+              <div class="tab-head">
+                <div class="tab"><label for="t-general" aria-controls="p-general">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+                  General
+                </label></div>
+                <div class="tab"><label for="t-notifications" aria-controls="p-notifications">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Notifications
+                </label></div>
+                <div class="tab"><label for="t-billing" aria-controls="p-billing">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Billing
+                </label></div>
+                <div class="tab"><label for="t-integrations" aria-controls="p-integrations">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Integrations
+                </label></div>
+                <div class="tab"><label for="t-security" aria-controls="p-security">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Security
+                </label></div>
+                <div class="tab"><label for="t-backup" aria-controls="p-backup">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Backup
+                </label></div>
+              </div>
+
+              <!-- panels -->
+              <div class="panels">
+
+                <!-- GENERAL SETTINGS -->
+                <section id="p-general" class="panel">
+                  <div class="card">
+                    <h3>Club Information</h3>
+                    <div class="desc">Basic information about your fitness club</div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="club-name">Club Name</label>
+                      <input class="form-input" id="club-name" value="Fitness Club" />
+                    </div>
+                    
+                    <div class="form-row cols">
+                      <div>
+                        <label class="form-label" for="club-email">Contact Email</label>
+                        <input class="form-input" id="club-email" value="info@fitnessclub.com" />
+                      </div>
+                      <div>
+                        <label class="form-label" for="club-phone">Phone Number</label>
+                        <input class="form-input" id="club-phone" value="+1 (555) 123-4567" />
+                      </div>
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="club-address">Address</label>
+                      <textarea class="form-textarea" id="club-address">123 Fitness Street, Wellness City, WC 12345</textarea>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Operating Hours</h3>
+                    <div class="desc">Set your club's operating schedule</div>
+                    
+                    <div class="form-row cols">
+                      <div>
+                        <label class="form-label" for="weekday-open">Weekdays Open</label>
+                        <input class="form-input" id="weekday-open" value="5:00 AM" />
+                      </div>
+                      <div>
+                        <label class="form-label" for="weekday-close">Weekdays Close</label>
+                        <input class="form-input" id="weekday-close" value="11:00 PM" />
+                      </div>
+                    </div>
+                    
+                    <div class="form-row cols">
+                      <div>
+                        <label class="form-label" for="weekend-open">Weekend Open</label>
+                        <input class="form-input" id="weekend-open" value="6:00 AM" />
+                      </div>
+                      <div>
+                        <label class="form-label" for="weekend-close">Weekend Close</label>
+                        <input class="form-input" id="weekend-close" value="10:00 PM" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Theme & Appearance</h3>
+                    <div class="desc">Customize the look and feel of your admin interface</div>
+                    
+                    <div class="form-row">
+                      <label class="form-label">Primary Color</label>
+                      <div class="color-grid">
+                        <div class="color-option">
+                          <input type="radio" name="theme-color" value="blue" checked />
+                          <div class="color-swatch" style="background:#0ea5e9"></div>
+                        </div>
+                        <div class="color-option">
+                          <input type="radio" name="theme-color" value="green" />
+                          <div class="color-swatch" style="background:#22c55e"></div>
+                        </div>
+                        <div class="color-option">
+                          <input type="radio" name="theme-color" value="purple" />
+                          <div class="color-swatch" style="background:#8b5cf6"></div>
+                        </div>
+                        <div class="color-option">
+                          <input type="radio" name="theme-color" value="orange" />
+                          <div class="color-swatch" style="background:#f59e0b"></div>
+                        </div>
+                        <div class="color-option">
+                          <input type="radio" name="theme-color" value="red" />
+                          <div class="color-swatch" style="background:#ef4444"></div>
+                        </div>
+                        <div class="color-option">
+                          <input type="radio" name="theme-color" value="teal" />
+                          <div class="color-swatch" style="background:#14b8a6"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>General Preferences</h3>
+                    <div class="desc">Configure general system behavior</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Auto-save changes</div>
+                        <div class="setting-desc">Automatically save form changes without clicking save</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Show member photos</div>
+                        <div class="setting-desc">Display member profile photos in lists and tables</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Enable dark mode</div>
+                        <div class="setting-desc">Use dark theme for the admin interface</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="actions">
+                    <a class="btn secondary" href="#reset">Reset to Defaults</a>
+                    <a class="btn primary" href="#saved">Save Changes</a>
+                  </div>
+                </section>
+
+                <!-- NOTIFICATIONS -->
+                <section id="p-notifications" class="panel">
+                  <div class="card">
+                    <h3>Email Notifications</h3>
+                    <div class="desc">Configure when to send email notifications</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">New member registration</div>
+                        <div class="setting-desc">Send email when a new member joins</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Payment received</div>
+                        <div class="setting-desc">Send email when payments are processed</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Class cancellations</div>
+                        <div class="setting-desc">Send email when classes are cancelled</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Low attendance alerts</div>
+                        <div class="setting-desc">Send email when class attendance is low</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>SMS Notifications</h3>
+                    <div class="desc">Configure SMS alerts for urgent notifications</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Emergency alerts</div>
+                        <div class="setting-desc">Send SMS for emergency situations</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Payment failures</div>
+                        <div class="setting-desc">Send SMS when payments fail</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Notification Recipients</h3>
+                    <div class="desc">Who should receive admin notifications</div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="admin-email">Primary Admin Email</label>
+                      <input class="form-input" id="admin-email" value="admin@fitnessclub.com" />
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="admin-phone">Admin Phone (SMS)</label>
+                      <input class="form-input" id="admin-phone" value="+1 (555) 987-6543" />
+                    </div>
+                  </div>
+
+                  <div class="actions">
+                    <a class="btn secondary" href="#test-notification">Send Test</a>
+                    <a class="btn primary" href="#saved">Save Changes</a>
+                  </div>
+                </section>
+
+                <!-- BILLING -->
+                <section id="p-billing" class="panel">
+                  <div class="card">
+                    <h3>Payment Processing</h3>
+                    <div class="desc">Configure payment methods and processing</div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="currency">Default Currency</label>
+                      <select class="form-select" id="currency">
+                        <option>USD - US Dollar</option>
+                        <option>EUR - Euro</option>
+                        <option>GBP - British Pound</option>
+                        <option>CAD - Canadian Dollar</option>
+                      </select>
+                    </div>
+                    
+                    <div class="form-row cols">
+                      <div>
+                        <label class="form-label" for="tax-rate">Tax Rate (%)</label>
+                        <input class="form-input" id="tax-rate" value="8.25" />
+                      </div>
+                      <div>
+                        <label class="form-label" for="late-fee">Late Fee Amount</label>
+                        <input class="form-input" id="late-fee" value="25.00" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Billing Cycles</h3>
+                    <div class="desc">Configure automatic billing and renewals</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Auto-renewal</div>
+                        <div class="setting-desc">Automatically renew memberships when they expire</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Grace period</div>
+                        <div class="setting-desc">Allow 3-day grace period for failed payments</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="billing-day">Monthly Billing Day</label>
+                      <select class="form-select" id="billing-day">
+                        <option selected>1st of the month</option>
+                        <option>15th of the month</option>
+                        <option>Member's join date</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Invoice Settings</h3>
+                    <div class="desc">Customize invoice appearance and content</div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="invoice-prefix">Invoice Number Prefix</label>
+                      <input class="form-input" id="invoice-prefix" value="INV-" />
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="invoice-notes">Default Invoice Notes</label>
+                      <textarea class="form-textarea" id="invoice-notes">Thank you for your membership! Payment is due within 30 days.</textarea>
+                    </div>
+                  </div>
+
+                  <div class="actions">
+                    <a class="btn secondary" href="#preview-invoice">Preview Invoice</a>
+                    <a class="btn primary" href="#saved">Save Changes</a>
+                  </div>
+                </section>
+
+                <!-- INTEGRATIONS -->
+                <section id="p-integrations" class="panel">
+                  <div class="card">
+                    <h3>Available Integrations</h3>
+                    <div class="desc">Connect with third-party services to enhance your club management</div>
+                    
+                    <div class="integration">
+                      <div class="integration-icon" style="background:#1877f2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      </div>
+                      <div class="integration-info">
+                        <div class="integration-name">Facebook</div>
+                        <div class="integration-desc">Share class schedules and events on Facebook</div>
+                      </div>
+                      <div class="status connected">Connected</div>
+                      <a class="btn small secondary" href="#config-facebook">Configure</a>
+                    </div>
+                    
+                    <div class="integration">
+                      <div class="integration-icon" style="background:#00acee">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                      </div>
+                      <div class="integration-info">
+                        <div class="integration-name">Twitter</div>
+                        <div class="integration-desc">Post updates and announcements to Twitter</div>
+                      </div>
+                      <div class="status disconnected">Disconnected</div>
+                      <a class="btn small primary" href="#connect-twitter">Connect</a>
+                    </div>
+                    
+                    <div class="integration">
+                      <div class="integration-icon" style="background:#0077b5">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      </div>
+                      <div class="integration-info">
+                        <div class="integration-name">LinkedIn</div>
+                        <div class="integration-desc">Share professional updates and job postings</div>
+                      </div>
+                      <div class="status pending">Pending</div>
+                      <a class="btn small secondary" href="#retry-linkedin">Retry</a>
+                    </div>
+                    
+                    <div class="integration">
+                      <div class="integration-icon" style="background:#25d366">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/></svg>
+                      </div>
+                      <div class="integration-info">
+                        <div class="integration-name">WhatsApp Business</div>
+                        <div class="integration-desc">Send class reminders and updates via WhatsApp</div>
+                      </div>
+                      <div class="status disconnected">Disconnected</div>
+                      <a class="btn small primary" href="#connect-whatsapp">Connect</a>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>API Settings</h3>
+                    <div class="desc">Configure API access for custom integrations</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Enable API access</div>
+                        <div class="setting-desc">Allow external applications to access your data via API</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="api-key">API Key</label>
+                      <input class="form-input" id="api-key" value="fc_live_sk_1234567890abcdef" readonly />
+                    </div>
+                  </div>
+
+                  <div class="actions">
+                    <a class="btn secondary" href="#regenerate-api">Regenerate API Key</a>
+                    <a class="btn primary" href="#saved">Save Changes</a>
+                  </div>
+                </section>
+
+                <!-- SECURITY -->
+                <section id="p-security" class="panel">
+                  <div class="card">
+                    <h3>Authentication</h3>
+                    <div class="desc">Configure login and authentication settings</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Two-factor authentication</div>
+                        <div class="setting-desc">Require 2FA for all admin accounts</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Session timeout</div>
+                        <div class="setting-desc">Automatically log out inactive users</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="session-duration">Session Duration (minutes)</label>
+                      <select class="form-select" id="session-duration">
+                        <option>30</option>
+                        <option selected>60</option>
+                        <option>120</option>
+                        <option>240</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Password Policy</h3>
+                    <div class="desc">Set requirements for user passwords</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Minimum 8 characters</div>
+                        <div class="setting-desc">Require passwords to be at least 8 characters long</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Require special characters</div>
+                        <div class="setting-desc">Passwords must include at least one special character</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Password expiration</div>
+                        <div class="setting-desc">Force password changes every 90 days</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Access Control</h3>
+                    <div class="desc">Manage user permissions and access levels</div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="default-role">Default Role for New Users</label>
+                      <select class="form-select" id="default-role">
+                        <option>Member</option>
+                        <option selected>Staff</option>
+                        <option>Trainer</option>
+                        <option>Manager</option>
+                      </select>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">IP restrictions</div>
+                        <div class="setting-desc">Limit admin access to specific IP addresses</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="actions">
+                    <a class="btn secondary" href="#security-audit">Run Security Audit</a>
+                    <a class="btn primary" href="#saved">Save Changes</a>
+                  </div>
+                </section>
+
+                <!-- BACKUP -->
+                <section id="p-backup" class="panel">
+                  <div class="card">
+                    <h3>Automatic Backups</h3>
+                    <div class="desc">Configure automatic data backups</div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Enable automatic backups</div>
+                        <div class="setting-desc">Automatically backup your data on a schedule</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="backup-frequency">Backup Frequency</label>
+                      <select class="form-select" id="backup-frequency">
+                        <option selected>Daily</option>
+                        <option>Weekly</option>
+                        <option>Monthly</option>
+                      </select>
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="backup-time">Backup Time</label>
+                      <input class="form-input" id="backup-time" value="2:00 AM" />
+                    </div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="retention-days">Retention Period (days)</label>
+                      <select class="form-select" id="retention-days">
+                        <option>7</option>
+                        <option selected>30</option>
+                        <option>90</option>
+                        <option>365</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Backup Storage</h3>
+                    <div class="desc">Choose where to store your backups</div>
+                    
+                    <div class="form-row">
+                      <label class="form-label" for="storage-provider">Storage Provider</label>
+                      <select class="form-select" id="storage-provider">
+                        <option selected>Local Server</option>
+                        <option>Amazon S3</option>
+                        <option>Google Cloud Storage</option>
+                        <option>Dropbox</option>
+                      </select>
+                    </div>
+                    
+                    <div class="setting-row">
+                      <div class="setting-info">
+                        <div class="setting-label">Encrypt backups</div>
+                        <div class="setting-desc">Encrypt backup files for additional security</div>
+                      </div>
+                      <label class="toggle">
+                        <input type="checkbox" checked />
+                        <div class="toggle-track">
+                          <div class="toggle-thumb"></div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Recent Backups</h3>
+                    <div class="desc">View and manage recent backup files</div>
+                    
+                    <div style="display:grid;gap:8px">
+                      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:#ffffff08;border-radius:8px">
+                        <div>
+                          <div style="font-weight:700;font-size:13px">backup_2025-09-24_02-00.sql</div>
+                          <div style="font-size:11px;color:#94a3b8">Today at 2:00 AM • 45.2 MB</div>
+                        </div>
+                        <div style="display:flex;gap:8px">
+                          <a class="btn small secondary" href="#download-backup">Download</a>
+                          <a class="btn small warn" href="#delete-backup">Delete</a>
+                        </div>
+                      </div>
+                      
+                      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:#ffffff08;border-radius:8px">
+                        <div>
+                          <div style="font-weight:700;font-size:13px">backup_2025-09-23_02-00.sql</div>
+                          <div style="font-size:11px;color:#94a3b8">Yesterday at 2:00 AM • 44.8 MB</div>
+                        </div>
+                        <div style="display:flex;gap:8px">
+                          <a class="btn small secondary" href="#download-backup">Download</a>
+                          <a class="btn small warn" href="#delete-backup">Delete</a>
+                        </div>
+                      </div>
+                      
+                      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:#ffffff08;border-radius:8px">
+                        <div>
+                          <div style="font-weight:700;font-size:13px">backup_2025-09-22_02-00.sql</div>
+                          <div style="font-size:11px;color:#94a3b8">2 days ago at 2:00 AM • 44.1 MB</div>
+                        </div>
+                        <div style="display:flex;gap:8px">
+                          <a class="btn small secondary" href="#download-backup">Download</a>
+                          <a class="btn small warn" href="#delete-backup">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="actions">
+                    <a class="btn secondary" href="#create-backup">Create Backup Now</a>
+                    <a class="btn primary" href="#saved">Save Changes</a>
+                  </div>
+                </section>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Toasts -->
+          <div class="toasts">
+            <div class="toast t-saved">Settings saved successfully!</div>
+            <div class="toast t-reset" style="border-left-color: var(--hold)">Settings reset to defaults.</div>
+            <div class="toast t-error" style="border-left-color: var(--warn)">Error: Could not save settings.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div id="test-notification" class="modal" role="dialog" aria-modal="true" aria-labelledby="testNotificationTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="testNotificationTitle">Send Test Notification</h3>
+      <div class="form-row">
+        <label class="form-label" for="test-type">Notification Type</label>
+        <select class="form-select" id="test-type">
+          <option>Email</option>
+          <option>SMS</option>
+          <option>Both</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="test-recipient">Recipient</label>
+        <input class="form-input" id="test-recipient" value="admin@fitnessclub.com" />
+      </div>
+      <div class="actions">
+        <a class="btn secondary" href="#">Cancel</a>
+        <a class="btn primary" href="#saved">Send Test</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="preview-invoice" class="modal" role="dialog" aria-modal="true" aria-labelledby="previewInvoiceTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="previewInvoiceTitle">Invoice Preview</h3>
+      <div style="background:#ffffff08;padding:16px;border-radius:8px;margin:12px 0">
+        <div style="text-align:center;margin-bottom:16px">
+          <div style="font-weight:900;font-size:18px">Fitness Club</div>
+          <div style="font-size:12px;color:#94a3b8">123 Fitness Street, Wellness City, WC 12345</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">
+          <div>
+            <div style="font-weight:700;font-size:12px;color:#94a3b8">BILL TO:</div>
+            <div>John Doe</div>
+            <div style="font-size:12px;color:#94a3b8">john@example.com</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:700;font-size:12px;color:#94a3b8">INVOICE:</div>
+            <div>INV-1001</div>
+            <div style="font-size:12px;color:#94a3b8">September 24, 2025</div>
+          </div>
+        </div>
+        <div style="border-top:1px solid #ffffff1a;padding-top:12px">
+          <div style="display:flex;justify-content:space-between">
+            <span>Monthly Membership</span>
+            <span>$49.00</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid #ffffff1a;font-weight:700">
+            <span>Total</span>
+            <span>$49.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn secondary" href="#">Close</a>
+        <a class="btn primary" href="#saved">Use This Template</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="create-backup" class="modal" role="dialog" aria-modal="true" aria-labelledby="createBackupTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="createBackupTitle">Create Backup Now</h3>
+      <div style="color:#94a3b8;margin:12px 0">This will create a full backup of your club data including members, classes, and billing information.</div>
+      <div class="form-row">
+        <label class="form-label" for="backup-name">Backup Name</label>
+        <input class="form-input" id="backup-name" value="manual_backup_2025-09-24" />
+      </div>
+      <div class="actions">
+        <a class="btn secondary" href="#">Cancel</a>
+        <a class="btn primary" href="#saved">Create Backup</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- A11y helper -->
+  <span class="sr-only" aria-hidden="true"></span>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'984bcc0f932e4461',t:'MTc1ODgxNjY4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

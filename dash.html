@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fitness Club — Admin Dashboard</title>
+  <link rel="stylesheet" href="Admin_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+  <!-- Toast routing wrappers -->
+  <div id="root">
+    <div id="created">
+      <div id="updated">
+        <div id="deleted">
+          <div class="wrap">
+            <div class="topbar">
+              <div class="brand">
+                <div class="logo">FC</div>
+                <div>
+                  <h1>Fitness Club — Admin Dashboard</h1>
+                  <div class="sub">Overview of club operations, members, and performance • Demo UI only</div>
+                </div>
+              </div>
+              <div class="admin-nav">
+                <a href="dash.html" class="nav-link active">Dashboard</a>
+                <a href="memberManagement.html" class="nav-link">Members</a>
+                <a href="classes.html" class="nav-link">Classes</a>
+                <a href="analytics.html" class="nav-link">Reports</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+              </div>
+            </div>
+
+            <div class="dash-grid">
+              <!-- KPI Cards -->
+              <div class="widget kpi w-3">
+                <div class="widget-icon" style="background:rgba(96,165,250,.2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="kpi-value" style="color:var(--revenue)">$48.3K</div>
+                <div class="kpi-label">Monthly Revenue</div>
+                <div class="kpi-delta up">+8.4% vs last month</div>
+              </div>
+
+              <div class="widget kpi w-3">
+                <div class="widget-icon" style="background:rgba(52,211,153,.2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 20a8 8 0 0 1 16 0" stroke="#34d399" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="kpi-value" style="color:var(--members)">1,264</div>
+                <div class="kpi-label">Active Members</div>
+                <div class="kpi-delta up">+3.0% vs last month</div>
+              </div>
+
+              <div class="widget kpi w-3">
+                <div class="widget-icon" style="background:rgba(245,158,11,.2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="kpi-value" style="color:var(--classes)">142</div>
+                <div class="kpi-label">Classes This Week</div>
+                <div class="kpi-delta flat">Same as last week</div>
+              </div>
+
+              <div class="widget kpi w-3">
+                <div class="widget-icon" style="background:rgba(167,139,250,.2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 1 8 0M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="kpi-value" style="color:var(--trainers)">18</div>
+                <div class="kpi-label">Active Trainers</div>
+                <div class="kpi-delta up">+1 new this month</div>
+              </div>
+
+              <!-- Revenue Chart -->
+              <div class="widget w-8">
+                <div class="widget-title">
+                  <h3>Revenue & Member Growth</h3>
+                  <div style="display:flex;gap:12px;font-size:12px">
+                    <span style="display:flex;gap:4px;align-items:center"><span style="width:8px;height:8px;border-radius:50%;background:var(--revenue)"></span>Revenue</span>
+                    <span style="display:flex;gap:4px;align-items:center"><span style="width:8px;height:8px;border-radius:50%;background:var(--members)"></span>Members</span>
+                  </div>
+                </div>
+                <svg class="chart" viewBox="0 0 600 180" role="img" aria-label="Revenue and member growth chart">
+                  <!-- grid -->
+                  <g stroke-dasharray="4 4">
+                    <line class="gridline" x1="0" y1="30" x2="600" y2="30"/>
+                    <line class="gridline" x1="0" y1="60" x2="600" y2="60"/>
+                    <line class="gridline" x1="0" y1="90" x2="600" y2="90"/>
+                    <line class="gridline" x1="0" y1="120" x2="600" y2="120"/>
+                    <line class="gridline" x1="0" y1="150" x2="600" y2="150"/>
+                  </g>
+                  <!-- areas -->
+                  <path class="area1" d="M0,140 L60,130 L120,125 L180,115 L240,110 L300,105 L360,95 L420,90 L480,85 L540,80 L600,75 L600,180 L0,180 Z"/>
+                  <path class="area2" d="M0,150 L60,145 L120,140 L180,135 L240,130 L300,125 L360,120 L420,115 L480,110 L540,105 L600,100 L600,180 L0,180 Z"/>
+                  <!-- lines -->
+                  <polyline class="line1" points="0,140 60,130 120,125 180,115 240,110 300,105 360,95 420,90 480,85 540,80 600,75"/>
+                  <polyline class="line2" points="0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100"/>
+                  <!-- x labels -->
+                  <g fill="#94a3b8" font-size="10">
+                    <text x="0" y="172">Jan</text>
+                    <text x="100" y="172">Mar</text>
+                    <text x="200" y="172">May</text>
+                    <text x="300" y="172">Jul</text>
+                    <text x="400" y="172">Sep</text>
+                    <text x="500" y="172">Nov</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Quick Actions -->
+              <div class="widget w-4">
+                <div class="widget-title">
+                  <h3>Quick Actions</h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="actions">
+                  <a class="action-btn" href="#new-class">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <div>
+                      <div>Add New Class</div>
+                      <div style="font-size:11px;opacity:.8">Schedule a class session</div>
+                    </div>
+                  </a>
+                  <a class="action-btn secondary" href="#new-member">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <div>
+                      <div>Add Member</div>
+                      <div style="font-size:11px;opacity:.8">Register new member</div>
+                    </div>
+                  </a>
+                  <a class="action-btn warn" href="#announcement">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M10 2v20M14 2v20M4 7l4-4 4 4M20 17l-4 4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <div>
+                      <div>Send Announcement</div>
+                      <div style="font-size:11px;opacity:.8">Notify all members</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Recent Activity -->
+              <div class="widget w-6">
+                <div class="widget-title">
+                  <h3>Recent Activity</h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <div class="activity">
+                  <div class="activity-item">
+                    <div class="activity-icon" style="background:rgba(52,211,153,.2)">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 20a8 8 0 0 1 16 0" stroke="#34d399" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="activity-content">
+                      <div class="activity-title">New member registered</div>
+                      <div class="activity-desc">Casey Woods joined with Annual plan</div>
+                      <div class="activity-time">2 minutes ago</div>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon" style="background:rgba(245,158,11,.2)">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="activity-content">
+                      <div class="activity-title">Class fully booked</div>
+                      <div class="activity-desc">Morning Yoga (6:00 AM) reached capacity</div>
+                      <div class="activity-time">8 minutes ago</div>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon" style="background:rgba(96,165,250,.2)">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="activity-content">
+                      <div class="activity-title">Payment received</div>
+                      <div class="activity-desc">$49.00 from Ana Kim (Monthly plan)</div>
+                      <div class="activity-time">15 minutes ago</div>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon" style="background:rgba(167,139,250,.2)">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 1 8 0" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="activity-content">
+                      <div class="activity-title">Trainer updated schedule</div>
+                      <div class="activity-desc">Tom Miller added 3 HIIT sessions next week</div>
+                      <div class="activity-time">32 minutes ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Today's Classes -->
+              <div class="widget w-6">
+                <div class="widget-title">
+                  <h3>Today's Classes</h3>
+                  <span style="font-size:12px;color:#94a3b8">September 24, 2025</span>
+                </div>
+                <div class="recent">
+                  <div class="recent-item">
+                    <div class="recent-avatar">6A</div>
+                    <div class="recent-info">
+                      <div class="recent-name">Morning Yoga</div>
+                      <div class="recent-detail">Ana Kim • 6:00-7:00 AM</div>
+                    </div>
+                    <div class="recent-badge">18/20</div>
+                  </div>
+                  <div class="recent-item">
+                    <div class="recent-avatar">8A</div>
+                    <div class="recent-info">
+                      <div class="recent-name">HIIT Bootcamp</div>
+                      <div class="recent-detail">Tom Miller • 8:00-9:00 AM</div>
+                    </div>
+                    <div class="recent-badge">15/15</div>
+                  </div>
+                  <div class="recent-item">
+                    <div class="recent-avatar">12P</div>
+                    <div class="recent-info">
+                      <div class="recent-name">Lunch Flow</div>
+                      <div class="recent-detail">Jess R. • 12:00-1:00 PM</div>
+                    </div>
+                    <div class="recent-badge">8/12</div>
+                  </div>
+                  <div class="recent-item">
+                    <div class="recent-avatar">6P</div>
+                    <div class="recent-info">
+                      <div class="recent-name">Evening Strength</div>
+                      <div class="recent-detail">Dani K. • 6:00-7:30 PM</div>
+                    </div>
+                    <div class="recent-badge">20/20</div>
+                  </div>
+                  <div class="recent-item">
+                    <div class="recent-avatar">7P</div>
+                    <div class="recent-info">
+                      <div class="recent-name">Spin Class</div>
+                      <div class="recent-detail">Mike S. • 7:30-8:30 PM</div>
+                    </div>
+                    <div class="recent-badge">14/16</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Class Fill Rates -->
+              <div class="widget w-4">
+                <div class="widget-title">
+                  <h3>Class Fill Rates</h3>
+                  <span style="font-size:12px;color:#94a3b8">This week</span>
+                </div>
+                <div>
+                  <div class="stat-bar">
+                    <div class="stat-label">
+                      <span>Yoga</span>
+                      <span>92%</span>
+                    </div>
+                    <div class="stat-track">
+                      <div class="stat-fill" style="width:92%;background:var(--members)"></div>
+                    </div>
+                  </div>
+                  <div class="stat-bar">
+                    <div class="stat-label">
+                      <span>HIIT</span>
+                      <span>88%</span>
+                    </div>
+                    <div class="stat-track">
+                      <div class="stat-fill" style="width:88%;background:var(--classes)"></div>
+                    </div>
+                  </div>
+                  <div class="stat-bar">
+                    <div class="stat-label">
+                      <span>Strength</span>
+                      <span>76%</span>
+                    </div>
+                    <div class="stat-track">
+                      <div class="stat-fill" style="width:76%;background:var(--trainers)"></div>
+                    </div>
+                  </div>
+                  <div class="stat-bar">
+                    <div class="stat-label">
+                      <span>Cycling</span>
+                      <span>84%</span>
+                    </div>
+                    <div class="stat-track">
+                      <div class="stat-fill" style="width:84%;background:var(--revenue)"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mini Calendar -->
+              <div class="widget w-4">
+                <div class="widget-title">
+                  <h3>September 2025</h3>
+                  <div style="display:flex;gap:8px">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  </div>
+                </div>
+                <div class="calendar">
+                  <div class="cal-header">
+                    <div class="cal-day">S</div>
+                    <div class="cal-day">M</div>
+                    <div class="cal-day">T</div>
+                    <div class="cal-day">W</div>
+                    <div class="cal-day">T</div>
+                    <div class="cal-day">F</div>
+                    <div class="cal-day">S</div>
+                  </div>
+                  <div class="cal-grid">
+                    <div class="cal-date">1</div>
+                    <div class="cal-date">2</div>
+                    <div class="cal-date">3</div>
+                    <div class="cal-date">4</div>
+                    <div class="cal-date">5</div>
+                    <div class="cal-date event">6</div>
+                    <div class="cal-date">7</div>
+                    <div class="cal-date">8</div>
+                    <div class="cal-date">9</div>
+                    <div class="cal-date">10</div>
+                    <div class="cal-date">11</div>
+                    <div class="cal-date event">12</div>
+                    <div class="cal-date">13</div>
+                    <div class="cal-date">14</div>
+                    <div class="cal-date">15</div>
+                    <div class="cal-date">16</div>
+                    <div class="cal-date">17</div>
+                    <div class="cal-date">18</div>
+                    <div class="cal-date event">19</div>
+                    <div class="cal-date">20</div>
+                    <div class="cal-date">21</div>
+                    <div class="cal-date">22</div>
+                    <div class="cal-date">23</div>
+                    <div class="cal-date today">24</div>
+                    <div class="cal-date">25</div>
+                    <div class="cal-date event">26</div>
+                    <div class="cal-date">27</div>
+                    <div class="cal-date">28</div>
+                    <div class="cal-date">29</div>
+                    <div class="cal-date">30</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Equipment Status -->
+              <div class="widget w-4">
+                <div class="widget-title">
+                  <h3>Equipment Status</h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="recent">
+                  <div class="recent-item">
+                    <div style="width:8px;height:8px;border-radius:50%;background:var(--ok)"></div>
+                    <div class="recent-info">
+                      <div class="recent-name">Treadmills</div>
+                      <div class="recent-detail">12/12 operational</div>
+                    </div>
+                    <div class="recent-badge" style="background:#dcfce7;color:#065f46">Good</div>
+                  </div>
+                  <div class="recent-item">
+                    <div style="width:8px;height:8px;border-radius:50%;background:var(--hold)"></div>
+                    <div class="recent-info">
+                      <div class="recent-name">Bikes</div>
+                      <div class="recent-detail">15/16 operational</div>
+                    </div>
+                    <div class="recent-badge" style="background:#fef3c7;color:#7c2d12">Check</div>
+                  </div>
+                  <div class="recent-item">
+                    <div style="width:8px;height:8px;border-radius:50%;background:var(--ok)"></div>
+                    <div class="recent-info">
+                      <div class="recent-name">Weights</div>
+                      <div class="recent-detail">All sets complete</div>
+                    </div>
+                    <div class="recent-badge" style="background:#dcfce7;color:#065f46">Good</div>
+                  </div>
+                  <div class="recent-item">
+                    <div style="width:8px;height:8px;border-radius:50%;background:var(--warn)"></div>
+                    <div class="recent-info">
+                      <div class="recent-name">Sound System</div>
+                      <div class="recent-detail">Studio B needs repair</div>
+                    </div>
+                    <div class="recent-badge" style="background:#fee2e2;color:#7f1d1d">Issue</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Toasts -->
+          <div class="toasts">
+            <div class="toast t-created">Action completed successfully!</div>
+            <div class="toast t-updated">Changes saved.</div>
+            <div class="toast t-deleted" style="border-left-color: var(--warn)">Item removed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div id="new-class" class="modal" role="dialog" aria-modal="true" aria-labelledby="newClassTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="newClassTitle">Add New Class</h3>
+      <div class="row"><label for="c1">Class name</label><input id="c1" placeholder="e.g., Evening Pilates" /></div>
+      <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label for="c2">Trainer</label><select id="c2"><option>Ana Kim</option><option>Tom Miller</option><option>Jess R.</option><option>Dani K.</option></select></div>
+        <div><label for="c3">Category</label><select id="c3"><option>Yoga</option><option>HIIT</option><option>Strength</option><option>Cycling</option><option>Pilates</option></select></div>
+      </div>
+      <div class="row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div><label for="c4">Date</label><input id="c4" placeholder="2025-09-25" /></div>
+        <div><label for="c5">Start time</label><input id="c5" placeholder="7:00 PM" /></div>
+        <div><label for="c6">Duration</label><input id="c6" placeholder="60 min" /></div>
+      </div>
+      <div class="row"><label for="c7">Description</label><textarea id="c7" placeholder="Class details, requirements, etc."></textarea></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#created">Save Class</a></div>
+    </div>
+  </div>
+
+  <div id="new-member" class="modal" role="dialog" aria-modal="true" aria-labelledby="newMemberTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="newMemberTitle">Add Member</h3>
+      <div class="row"><label for="m1">Full name</label><input id="m1" placeholder="e.g., Casey Woods" /></div>
+      <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label for="m2">Email</label><input id="m2" placeholder="e.g., casey@example.com" /></div>
+        <div><label for="m3">Phone</label><input id="m3" placeholder="e.g., +1 (555) 123-4567" /></div>
+      </div>
+      <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label for="m4">Plan</label><select id="m4"><option>Monthly</option><option>Annual</option><option>Unlimited</option><option>Class Pack (10)</option></select></div>
+        <div><label for="m5">Start date</label><input id="m5" placeholder="e.g., 2025-09-24" /></div>
+      </div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#created">Save Member</a></div>
+    </div>
+  </div>
+
+  <div id="announcement" class="modal" role="dialog" aria-modal="true" aria-labelledby="announcementTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="announcementTitle">Send Announcement</h3>
+      <div class="row"><label for="a1">Subject</label><input id="a1" placeholder="e.g., New Class Schedule" /></div>
+      <div class="row"><label for="a2">Recipients</label><select id="a2"><option>All Members</option><option>Active Members Only</option><option>Trainers Only</option><option>Custom List</option></select></div>
+      <div class="row"><label for="a3">Message</label><textarea id="a3" placeholder="Your announcement message here..."></textarea></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#created">Send Announcement</a></div>
+    </div>
+  </div>
+
+  <!-- A11y helper -->
+  <span class="sr-only" aria-hidden="true"></span>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'984bbe7c92433a48',t:'MTc1ODgxNjEyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fitness Club — Admin Trainers</title>
+  <link rel="stylesheet" href="Admin_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+   <div class="admin-nav">
+                <a href="dash.html" class="nav-link active">Dashboard</a>
+                <a href="memberManagement.html" class="nav-link">Members</a>
+                <a href="classes.html" class="nav-link">Classes</a>
+                <a href="analytics.html" class="nav-link">Reports</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+              </div>
+  <!-- Toast routing wrappers -->
+  <div id="root">
+    <div id="created">
+      <div id="updated">
+        <div id="deleted">
+          <div class="wrap">
+            <div class="topbar">
+              <div class="brand">
+                <div class="logo">FC</div>
+                <div>
+                  <h1>Fitness Club — Admin Trainers</h1>
+                  <div class="sub">Remember to email Anna the new schedule.</div>
+                </div>
+              </div>
+              <div class="notice"><b>Tip:</b> This CSS-only page uses popups and toasts to preview actions.</div>
+            </div>
+
+            <div class="tabs">
+              <!-- radios -->
+              <input type="radio" id="t-trainers" name="tabs" checked />
+              <input type="radio" id="t-create" name="tabs" />
+              <input type="radio" id="t-certs" name="tabs" />
+              <input type="radio" id="t-availability" name="tabs" />
+
+              <!-- head -->
+              <div class="tab-head">
+                <div class="tab"><label for="t-trainers" aria-controls="p-trainers">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Trainers
+                </label></div>
+                <div class="tab"><label for="t-create" aria-controls="p-create">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  New Trainer
+                </label></div>
+                <div class="tab"><label for="t-certs" aria-controls="p-certs">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m9 12 2 2 4-4M5 7h14v10H5z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Certifications
+                </label></div>
+                <div class="tab"><label for="t-availability" aria-controls="p-availability">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 4v4M17 4v4M4 9h16M5 12h4m3 0h4M5 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Availability
+                </label></div>
+              </div>
+
+              <!-- panels -->
+              <div class="panels">
+
+                <!-- TRAINERS LIST -->
+                <section id="p-trainers" class="panel">
+                  <div class="card">
+                    <div class="toolbar">
+                      <div class="left">
+                        <div class="search">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                          <input type="search" placeholder="Search trainers (demo)" aria-label="Search trainers (demo)" />
+                        </div>
+                        <div class="tag">Filter: All Specialties</div>
+                      </div>
+                      <div class="right">
+                        <a class="btn primary" href="#new-trainer">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                          Add Trainer
+                        </a>
+                        <a class="btn secondary" href="data:text/csv;charset=utf-8,Name,Specialties,Phone,Email,Status%0A" download="trainers.csv">Export CSV</a>
+                      </div>
+                    </div>
+
+                    <div class="hint" style="margin-bottom:10px">Showing 4 sample trainers</div>
+
+                    <div style="overflow:auto">
+                      <table class="table" aria-label="Trainers table">
+                        <thead>
+                          <tr>
+                            <th>Trainer</th>
+                            <th>Specialties</th>
+                            <th>Certifications</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th style="text-align:right;padding-right:12px">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div style="display:flex;gap:10px;align-items:center">
+                                <div class="avatar">AK</div>
+                                <div>
+                                  <div style="font-weight:800">Ana Kim</div>
+                                  <div class="muted" style="font-size:12px">Yoga • Pilates</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td><span class="badge">Mobility</span> <span class="badge green">Yoga</span></td>
+                            <td><span class="tag">RYT-500</span></td>
+                            <td>+1 (555) 111-2468</td>
+                            <td><a href="mailto:ana@example.com">ana@example.com</a></td>
+                            <td><span class="status on">Active</span></td>
+                            <td style="text-align:right">
+                              <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+                                <a class="btn secondary" href="#edit-ana">Edit</a>
+                                <a class="btn warn" href="#remove-ana">Remove</a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <div style="display:flex;gap:10px;align-items:center">
+                                <div class="avatar">TM</div>
+                                <div>
+                                  <div style="font-weight:800">Tom Miller</div>
+                                  <div class="muted" style="font-size:12px">HIIT • Strength</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td><span class="badge amber">HIIT</span> <span class="badge green">Strength</span></td>
+                            <td><span class="tag">CPT</span></td>
+                            <td>+1 (555) 214-7788</td>
+                            <td><a href="mailto:tom@example.com">tom@example.com</a></td>
+                            <td><span class="status on">Active</span></td>
+                            <td style="text-align:right">
+                              <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+                                <a class="btn secondary" href="#edit-tom">Edit</a>
+                                <a class="btn warn" href="#remove-tom">Remove</a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <div style="display:flex;gap:10px;align-items:center">
+                                <div class="avatar">JR</div>
+                                <div>
+                                  <div style="font-weight:800">Jess R.</div>
+                                  <div class="muted" style="font-size:12px">Cycling</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td><span class="badge">Cycling</span></td>
+                            <td><span class="tag">SPIN PRO</span></td>
+                            <td>+1 (555) 884-9911</td>
+                            <td><a href="mailto:jess@example.com">jess@example.com</a></td>
+                            <td><span class="status on">Active</span></td>
+                            <td style="text-align:right">
+                              <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+                                <a class="btn secondary" href="#edit-jess">Edit</a>
+                                <a class="btn warn" href="#remove-jess">Remove</a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <div style="display:flex;gap:10px;align-items:center">
+                                <div class="avatar">DK</div>
+                                <div>
+                                  <div style="font-weight:800">Dani K.</div>
+                                  <div class="muted" style="font-size:12px">Strength • Conditioning</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td><span class="badge green">Strength</span> <span class="badge gray">Conditioning</span></td>
+                            <td><span class="tag">CSCS</span></td>
+                            <td>+1 (555) 300-6602</td>
+                            <td><a href="mailto:dani@example.com">dani@example.com</a></td>
+                            <td><span class="status off">Inactive</span></td>
+                            <td style="text-align:right">
+                              <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+                                <a class="btn secondary" href="#edit-dani">Edit</a>
+                                <a class="btn warn" href="#remove-dani">Remove</a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- NEW TRAINER -->
+                <section id="p-create" class="panel">
+                  <div class="card">
+                    <h2 style="margin:0 0 8px 0">Add a Trainer</h2>
+                    <div class="muted" style="margin-bottom:14px">This is a demo form. Use “Save” to see a success toast.</div>
+
+                    <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px">
+                      <div class="i-card">
+                        <div class="row">
+                          <label for="n-name">Full name</label>
+                          <input id="n-name" placeholder="e.g., Casey Woods" />
+                        </div>
+                        <div class="row">
+                          <label for="n-email">Email</label>
+                          <input id="n-email" placeholder="e.g., casey@example.com" />
+                        </div>
+                        <div class="row">
+                          <label for="n-phone">Phone</label>
+                          <input id="n-phone" placeholder="e.g., +1 (555) 123-4567" />
+                        </div>
+                      </div>
+
+                      <div class="i-card">
+                        <div class="row">
+                          <label for="n-specialties">Specialties</label>
+                          <input id="n-specialties" placeholder="e.g., Strength, HIIT, Mobility" />
+                        </div>
+                        <div class="row">
+                          <label for="n-status">Status</label>
+                          <select id="n-status">
+                            <option>Active</option>
+                            <option>Inactive</option>
+                          </select>
+                        </div>
+                        <div class="row">
+                          <label for="n-certs">Certifications</label>
+                          <input id="n-certs" placeholder="e.g., CPT, CSCS, RYT-200" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="i-card" style="margin-top:16px">
+                      <div class="row">
+                        <label>Available days</label>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px">
+                          <label class="tag"><input class="sr-only" type="checkbox" /> Mon</label>
+                          <label class="tag"><input class="sr-only" type="checkbox" /> Tue</label>
+                          <label class="tag"><input class="sr-only" type="checkbox" /> Wed</label>
+                          <label class="tag"><input class="sr-only" type="checkbox" /> Thu</label>
+                          <label class="tag"><input class="sr-only" type="checkbox" /> Fri</label>
+                          <label class="tag"><input class="sr-only" type="checkbox" /> Sat</label>
+                          <label class="tag"><input class="sr-only" type="checkbox" /> Sun</label>
+                        </div>
+                      </div>
+                      <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                        <div>
+                          <label for="n-start">Start time</label>
+                          <input id="n-start" placeholder="e.g., 07:00" />
+                        </div>
+                        <div>
+                          <label for="n-end">End time</label>
+                          <input id="n-end" placeholder="e.g., 15:00" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="n-notes">Notes</label>
+                        <textarea id="n-notes" placeholder="Coaching style, languages, or other details…"></textarea>
+                      </div>
+                      <div class="actions">
+                        <a class="btn secondary" href="#t-trainers">Cancel</a>
+                        <a class="btn primary" href="#created">Save Trainer</a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- CERTIFICATIONS -->
+                <section id="p-certs" class="panel">
+                  <div class="card">
+                    <div class="toolbar" style="margin-bottom:8px">
+                      <h2 style="margin:0">Certifications</h2>
+                      <a class="btn primary" href="#add-cert">Add Certification</a>
+                    </div>
+
+                    <div class="grid">
+                      <div class="i-card">
+                        <div class="i-head">
+                          <div class="tag">RYT-500</div>
+                          <div class="i-name">Yoga Alliance</div>
+                          <span class="tag" style="margin-left:auto">Yoga</span>
+                        </div>
+                        <div class="muted">Advanced teaching certification for experienced yoga instructors.</div>
+                        <div class="actions" style="display:flex;gap:8px;justify-content:flex-end">
+                          <a class="btn secondary" href="#edit-cert-ryt">Edit</a>
+                          <a class="btn warn" href="#remove-cert-ryt">Remove</a>
+                        </div>
+                      </div>
+
+                      <div class="i-card">
+                        <div class="i-head">
+                          <div class="tag">CPT</div>
+                          <div class="i-name">Certified Personal Trainer</div>
+                          <span class="tag" style="margin-left:auto">General</span>
+                        </div>
+                        <div class="muted">Foundation credential covering program design and safety.</div>
+                        <div class="actions" style="display:flex;gap:8px;justify-content:flex-end">
+                          <a class="btn secondary" href="#edit-cert-cpt">Edit</a>
+                          <a class="btn warn" href="#remove-cert-cpt">Remove</a>
+                        </div>
+                      </div>
+
+                      <div class="i-card">
+                        <div class="i-head">
+                          <div class="tag">CSCS</div>
+                          <div class="i-name">Strength & Conditioning</div>
+                          <span class="tag" style="margin-left:auto">Strength</span>
+                        </div>
+                        <div class="muted">Focus on athletic performance and periodization.</div>
+                        <div class="actions" style="display:flex;gap:8px;justify-content:flex-end">
+                          <a class="btn secondary" href="#edit-cert-cscs">Edit</a>
+                          <a class="btn warn" href="#remove-cert-cscs">Remove</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- AVAILABILITY -->
+                <section id="p-availability" class="panel">
+                  <div class="card">
+                    <div class="toolbar" style="margin-bottom:8px">
+                      <h2 style="margin:0">Weekly Availability (sample)</h2>
+                      <div class="right">
+                        <span class="tag">Trainer: All</span>
+                        <a class="btn secondary" href="#new-trainer">Quick Add</a>
+                      </div>
+                    </div>
+
+                    <div class="sched">
+                      <div class="sched-grid">
+                        <div></div>
+                        <div class="col-head">Mon</div>
+                        <div class="col-head">Tue</div>
+                        <div class="col-head">Wed</div>
+                        <div class="col-head">Thu</div>
+                        <div class="col-head">Fri</div>
+
+                        <!-- 7AM -->
+                        <div class="slot"><div class="muted">07:00</div></div>
+                        <div class="slot"><span class="pill">Ana • Morning</span></div>
+                        <div class="slot"></div>
+                        <div class="slot"><span class="pill" style="background:linear-gradient(135deg,#22c55e,#16a34a)">Dani • Strength</span></div>
+                        <div class="slot"></div>
+                        <div class="slot"><span class="pill" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">Tom • HIIT</span></div>
+
+                        <!-- 12PM -->
+                        <div class="slot"><div class="muted">12:00</div></div>
+                        <div class="slot"></div>
+                        <div class="slot"><span class="pill" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">Tom • Lunch</span></div>
+                        <div class="slot"></div>
+                        <div class="slot"><span class="pill">Jess • Spin</span></div>
+                        <div class="slot"></div>
+
+                        <!-- 6PM -->
+                        <div class="slot"><div class="muted">18:00</div></div>
+                        <div class="slot"><span class="pill">Jess • Spin</span></div>
+                        <div class="slot"><span class="pill" style="background:linear-gradient(135deg,#22c55e,#16a34a)">Dani • Strength</span></div>
+                        <div class="slot"><span class="pill">Jess • Spin</span></div>
+                        <div class="slot"><span class="pill">Ana • Flow</span></div>
+                        <div class="slot"></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Toasts -->
+          <div class="toasts">
+            <div class="toast t-created">Saved successfully. Your trainer has been added.</div>
+            <div class="toast t-updated">Changes saved.</div>
+            <div class="toast t-deleted" style="border-left-color: var(--warn)">Item removed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS: Trainers -->
+  <div id="new-trainer" class="modal" role="dialog" aria-modal="true" aria-labelledby="newTrainerTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="newTrainerTitle">Add Trainer</h3>
+      <div class="row"><label for="m1">Full name</label><input id="m1" placeholder="e.g., Casey Woods" /></div>
+      <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label for="m2">Email</label><input id="m2" placeholder="e.g., casey@example.com" /></div>
+        <div><label for="m3">Phone</label><input id="m3" placeholder="e.g., +1 (555) 123-4567" /></div>
+      </div>
+      <div class="row"><label for="m4">Specialties</label><input id="m4" placeholder="e.g., Strength, HIIT" /></div>
+      <div class="row"><label for="m5">Certifications</label><input id="m5" placeholder="e.g., CPT, CSCS" /></div>
+      <div class="row"><label for="m6">Notes</label><textarea id="m6" placeholder="Short bio or highlights…"></textarea></div>
+      <div class="actions">
+        <a class="btn secondary" href="#">Cancel</a>
+        <a class="btn primary" href="#created">Save</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit modals -->
+  <div id="edit-ana" class="modal" role="dialog" aria-modal="true" aria-labelledby="editAnaTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="editAnaTitle">Edit — Ana Kim</h3>
+      <div class="row"><label>Name</label><input value="Ana Kim" /></div>
+      <div class="row"><label>Email</label><input value="ana@example.com" /></div>
+      <div class="row"><label>Specialties</label><input value="Yoga, Pilates" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#updated">Save changes</a></div>
+    </div>
+  </div>
+
+  <div id="edit-tom" class="modal" role="dialog" aria-modal="true" aria-labelledby="editTomTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="editTomTitle">Edit — Tom Miller</h3>
+      <div class="row"><label>Name</label><input value="Tom Miller" /></div>
+      <div class="row"><label>Email</label><input value="tom@example.com" /></div>
+      <div class="row"><label>Specialties</label><input value="HIIT, Strength" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#updated">Save changes</a></div>
+    </div>
+  </div>
+
+  <div id="edit-jess" class="modal" role="dialog" aria-modal="true" aria-labelledby="editJessTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="editJessTitle">Edit — Jess R.</h3>
+      <div class="row"><label>Name</label><input value="Jess R." /></div>
+      <div class="row"><label>Email</label><input value="jess@example.com" /></div>
+      <div class="row"><label>Specialties</label><input value="Cycling" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#updated">Save changes</a></div>
+    </div>
+  </div>
+
+  <div id="edit-dani" class="modal" role="dialog" aria-modal="true" aria-labelledby="editDaniTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="editDaniTitle">Edit — Dani K.</h3>
+      <div class="row"><label>Name</label><input value="Dani K." /></div>
+      <div class="row"><label>Email</label><input value="dani@example.com" /></div>
+      <div class="row"><label>Specialties</label><input value="Strength, Conditioning" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#updated">Save changes</a></div>
+    </div>
+  </div>
+
+  <!-- Remove confirms -->
+  <div id="remove-ana" class="modal" role="dialog" aria-modal="true" aria-labelledby="delAnaTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="delAnaTitle" style="color:#fecaca">Remove Trainer?</h3>
+      <div class="muted">“Ana Kim” will be removed. This action can’t be undone in this demo.</div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn warn" href="#deleted">Remove</a></div>
+    </div>
+  </div>
+
+  <div id="remove-tom" class="modal" role="dialog" aria-modal="true" aria-labelledby="delTomTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="delTomTitle" style="color:#fecaca">Remove Trainer?</h3>
+      <div class="muted">“Tom Miller” will be removed. This action can’t be undone in this demo.</div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn warn" href="#deleted">Remove</a></div>
+    </div>
+  </div>
+
+  <div id="remove-jess" class="modal" role="dialog" aria-modal="true" aria-labelledby="delJessTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="delJessTitle" style="color:#fecaca">Remove Trainer?</h3>
+      <div class="muted">“Jess R.” will be removed. This action can’t be undone in this demo.</div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn warn" href="#deleted">Remove</a></div>
+    </div>
+  </div>
+
+  <div id="remove-dani" class="modal" role="dialog" aria-modal="true" aria-labelledby="delDaniTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="delDaniTitle" style="color:#fecaca">Remove Trainer?</h3>
+      <div class="muted">“Dani K.” will be removed. This action can’t be undone in this demo.</div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn warn" href="#deleted">Remove</a></div>
+    </div>
+  </div>
+
+  <!-- Certification modals -->
+  <div id="add-cert" class="modal" role="dialog" aria-modal="true" aria-labelledby="addCertTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="addCertTitle">Add Certification</h3>
+      <div class="row"><label for="c1">Code</label><input id="c1" placeholder="e.g., RYT-200" /></div>
+      <div class="row"><label for="c2">Title</label><input id="c2" placeholder="e.g., Registered Yoga Teacher" /></div>
+      <div class="row"><label for="c3">Category</label><input id="c3" placeholder="e.g., Yoga, Strength, General" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#created">Save</a></div>
+    </div>
+  </div>
+
+  <div id="edit-cert-ryt" class="modal" role="dialog" aria-modal="true" aria-labelledby="editCertRytTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="editCertRytTitle">Edit — RYT-500</h3>
+      <div class="row"><label>Title</label><input value="Yoga Alliance" /></div>
+      <div class="row"><label>Category</label><input value="Yoga" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#updated">Save changes</a></div>
+    </div>
+  </div>
+
+  <div id="remove-cert-ryt" class="modal" role="dialog" aria-modal="true" aria-labelledby="delCertRytTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="delCertRytTitle" style="color:#fecaca">Remove Certification?</h3>
+      <div class="muted">“RYT-500” will be removed. Demo-only action.</div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn warn" href="#deleted">Remove</a></div>
+    </div>
+  </div>
+
+  <div id="edit-cert-cpt" class="modal" role="dialog" aria-modal="true" aria-labelledby="editCertCptTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="editCertCptTitle">Edit — CPT</h3>
+      <div class="row"><label>Title</label><input value="Certified Personal Trainer" /></div>
+      <div class="row"><label>Category</label><input value="General" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#updated">Save changes</a></div>
+    </div>
+  </div>
+
+  <div id="remove-cert-cpt" class="modal" role="dialog" aria-modal="true" aria-labelledby="delCertCptTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="delCertCptTitle" style="color:#fecaca">Remove Certification?</h3>
+      <div class="muted">“CPT” will be removed. Demo-only action.</div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn warn" href="#deleted">Remove</a></div>
+    </div>
+  </div>
+
+  <div id="edit-cert-cscs" class="modal" role="dialog" aria-modal="true" aria-labelledby="editCertCscsTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="editCertCscsTitle">Edit — CSCS</h3>
+      <div class="row"><label>Title</label><input value="Strength & Conditioning" /></div>
+      <div class="row"><label>Category</label><input value="Strength" /></div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn primary" href="#updated">Save changes</a></div>
+    </div>
+  </div>
+
+  <div id="remove-cert-cscs" class="modal" role="dialog" aria-modal="true" aria-labelledby="delCertCscsTitle">
+    <a class="backdrop" href="#"></a>
+    <div class="dialog">
+      <a class="close-x" href="#" aria-label="Close">×</a>
+      <h3 id="delCertCscsTitle" style="color:#fecaca">Remove Certification?</h3>
+      <div class="muted">“CSCS” will be removed. Demo-only action.</div>
+      <div class="actions"><a class="btn secondary" href="#">Cancel</a><a class="btn warn" href="#deleted">Remove</a></div>
+    </div>
+  </div>
+
+  <!-- A11y helpers -->
+  <span class="sr-only" aria-hidden="true"></span>
+  <style>
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9841c3be6681c617',t:'MTc1ODcxMTQ4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

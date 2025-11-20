@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Club - Merchandise</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  button{
+            background: #ff5722;
+            color: #f8f9fa;
+            border:  none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+          
+        }
+button:hover{
+    background: #d73208;
+}
+</style>
+
+</head>
+<body class="merchB">
+  <header>
+  <div class="header-left">
+    <img src="logo.png" alt="Logo" class="logo">
+    <span class="site-name">Fitness Club</span>
+  </div>
+  <nav class="nav-links">
+    <a href="indexH.html">HOME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="merchandise.html">MERCHANDISE</a>
+    <a href="contact.html">CONTACT</a>
+    <a href="newMember.html">REGISTER</a>
+  </nav>
+            <button class="signup-btn"><a href="login.html">Login</a></button>
+</header>  
+
+  <!-- Hidden checkboxes for cart state -->
+  <input type="checkbox" id="yoga-mat" class="add-btn">
+  <input type="checkbox" id="waist-trainer" class="add-btn">
+  <input type="checkbox" id="sneakers" class="add-btn">
+  <input type="checkbox" id="hoodies" class="add-btn">
+
+  <div class="containerB">
+    <div class="menuB">
+      <h2>FITNESS MERCHANDISE</h2>
+      <div class="products-grid">
+        
+        <div class="itemB">
+          <div class="product-name">Premium Yoga Mat</div>
+          <div class="product-price">₹50</div>
+          <div class="product-images">
+            <div class="product-image"><img src="Solana 1_ Yoga Mat.jpg" alt=""></div>
+            <div class="product-image"><img src="mattt.jpg" alt=""></div>
+          </div>
+<button onclick="addToCart('Yoga Mat ',50)">Add</button>
+        </div>
+
+        <div class="itemB">
+          <div class="product-name">Waist Trainer</div>
+          <div class="product-price">₹50</div>
+          <div class="product-images">
+            <div class="product-image"><img src="Women’s latex underbust corset waist trainer cinch body shaper new size L new.jpg" alt=""></div>
+          </div>
+<button onclick="addToCart('Waist Trainer ',50)">Add</button>
+        </div>
+
+        <div class="itemB">
+          <div class="product-name">Athletic Sneakers</div>
+          <div class="product-price">₹120</div>
+          <div class="product-images">
+            <div class="product-image"><img src="Nike Shox TL Black_Black-Mtlc Hematite-Max Orange.jpg" alt=""></div>
+          </div>
+<button onclick="addToCart('Sneakers ',120)">Add</button>
+        </div>
+
+        <div class="itemB">
+          <div class="product-name">Fitness Hoodies</div>
+          <div class="product-price">₹75</div>
+          <div class="product-images">
+            <div class="product-image"><img src="Veste Nike.jpg" alt=""></div>
+          </div>
+<button onclick="addToCart('Hoodies ',75)">Add</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cart1">
+      <h2>Your Cart</h2>
+      <ul class="cart-items">
+        
+        <li class="cart-item yoga-mat">
+          <input type="checkbox" id="remove-yoga" class="remove-btn">
+          <div class="item-info">
+            <span class="item-name">Premium Yoga Mat</span>
+            <div>
+              <span class="item-price">₹50</span>
+              <label for="remove-yoga" class="remove-label">×</label>
+            </div>
+          </div>
+        </li>
+
+        <li class="cart-item waist-trainer">
+          <input type="checkbox" id="remove-waist" class="remove-btn">
+          <div class="item-info">
+            <span class="item-name">Waist Trainer</span>
+            <div>
+              <span class="item-price">₹50</span>
+              <label for="remove-waist" class="remove-label">×</label>
+            </div>
+          </div>
+        </li>
+
+        <li class="cart-item sneakers">
+          <input type="checkbox" id="remove-sneakers" class="remove-btn">
+          <div class="item-info">
+            <span class="item-name">Athletic Sneakers</span>
+            <div>
+              <span class="item-price">₹120</span>
+              <label for="remove-sneakers" class="remove-label">×</label>
+            </div>
+          </div>
+        </li>
+
+        <li class="cart-item hoodies">
+          <input type="checkbox" id="remove-hoodies" class="remove-btn">
+          <div class="item-info">
+            <span class="item-name">Fitness Hoodies</span>
+            <div>
+              <span class="item-price">₹75</span>
+              <label for="remove-hoodies" class="remove-label">×</label>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+       <div class="cart">
+            <h2>Your Cart</h2>
+            <ul id="cartItems"></ul>
+            <div class="total">
+                Total: ₹<span id="cartTotal">0</span>
+            </div>
+        </div>
+
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(item, price) {
+cart.push({ item, price });
+total += price;
+displayCart();
+}
+
+function displayCart() {
+let cartList = document.getElementById("cartItems");
+cartList.innerHTML = "";
+cart.forEach((c, index) => {
+cartList.innerHTML += `<li>${c.item} - ₹${c.price}
+<button onclick="removeFromCart(${index})">X</button></li>`;
+});
+document.getElementById("cartTotal").innerText = total;
+}
+
+function removeFromCart(index) {
+total -= cart[index].price;
+cart.splice(index, 1);
+displayCart();
+}
+</script>
+</body>
+</html>
